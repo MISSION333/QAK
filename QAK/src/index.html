@@ -1,0 +1,12 @@
+{% extends 'layouts/base.html' %} 
+
+{% block main %}
+        <form method="POST" action="/generate/">
+            {% csrf_token %}
+            <input type="text" name="question">
+
+            <button type="submit">Generate</button>
+            <!-- <input type="submit">Generate</input> -->
+
+        </form>
+{% endblock %}
