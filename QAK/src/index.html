@@ -9,10 +9,29 @@
 .section {
     display: none;
 }
+
+.loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
 </style>
 {% endblock %}
 
 {% block main %}
+
+<div id="loading-screen" class="loading-screen">
+    Loading...
+</div>
+
 <div class="container is-flex is-justify-content-center is-align-items-center" style="height: 100vh;">
     <div class="field has-addons">
         <div class="control">
@@ -23,6 +42,8 @@
         </div>
     </div>
 </div>
+
+
 
 <div class="section is-flex is-justify-content-center is-align-items-center" style="height: 100vh;">
     <div id="section-container">
@@ -53,6 +74,7 @@
     const sectionsContainer = document.getElementById("sections");
     const prevButton = document.getElementById("prev-btn");
     const nextButton = document.getElementById("next-btn");
+    const loadingScreen = document.getElementById("loading-screen");
     let currentSectionIndex = 0;
     var jsonData = {"Title": "Graph", "Sections": [{"SectionTitle": "Introduction", "SectionContent": "A graph is a data structure that represents a set of objects, which we call vertices, and the relationships between those objects, which we call edges. In a graph, vertices are connected to each other by edges. This concept is used to model various real-world situations, including social networks, transportation systems, and computer networks. Graphs can be used to solve problems like finding the shortest path, determining connectivity, and identifying clusters of related objects."}, {"SectionTitle": "Types of Graphs", "SectionContent": "There are several types of graphs, including:\n\n1. Directed Graph: In a directed graph, the edges have a direction. This means that you can only move from one vertex to another along the direction specified by the edge.\n\n2. Undirected Graph: In an undirected graph, the edges have no direction. You can move between any two vertices along the edge in both directions.\n\n3. Weighted Graph: In a weighted graph, each edge is assigned a weight or cost. This weight represents a measure of the cost or distance between the vertices connected by the edge.\n\n4. Bipartite Graph: In a bipartite graph, the vertices can be divided into two disjoint sets such that there are no edges between vertices within the same set.\n\n5. Cyclic Graph: In a cyclic graph, it is possible to traverse the graph and return to the starting vertex by following a path along the edges. In other words, there is at least one cycle in the graph."}, {"SectionTitle": "Graph Representation", "SectionContent": "There are multiple ways to represent a graph in computer memory. Two commonly used representations are:\n\n1. Adjacency Matrix: In this representation, a two-dimensional array is used where the rows and columns represent the vertices, and the value at each index represents the presence or absence of an edge between the vertices.\n\n2. Adjacency List: In this representation, each vertex is associated with a list that contains all its neighboring vertices. This can be implemented using an array of linked lists or an array of arrays.\n\nBoth representations have their advantages and disadvantages, depending on the operations to be performed on the graph."}, {"SectionTitle": "Conclusion", "SectionContent": "Graphs are powerful data structures that allow us to model and solve various problems. Understanding the different types of graphs and their representations is essential for effectively working with graph-based algorithms and applications. By using graphs, we can gain valuable insights and make informed decisions in a wide range of domains."}]};
 
@@ -61,7 +83,10 @@
     }
 
     // Initial display
+    loadingScreen.style.display = "none";
     displaySection(currentSectionIndex);
+
+
     prevButton.addEventListener("click", () => {
         if (currentSectionIndex > 0) {
             currentSectionIndex--;
@@ -99,6 +124,9 @@
 
     function postb()
     {
+        const loadingScreen = document.getElementById("loading-screen");
+        loadingScreen.style.display = "block";
+
         postData('/generate/', {
             question    : question.value,
         }).then(data => {
@@ -107,6 +135,10 @@
             index = 0;
             titleElement.innerHTML = `${data.Title}`;
             displaySection(index)
+
+            // Hide the loading screen when the request is complete
+            loadingScreen.style.display = "none";
+
         });
     }
 </script>
