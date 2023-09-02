@@ -139,6 +139,8 @@
             // Hide the loading screen when the request is complete
             loadingScreen.style.display = "none";
 
+        }).catch(error => {
+            loadingScreen.style.display = "none";
         });
     }
 </script>
