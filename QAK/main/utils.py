@@ -1,15 +1,13 @@
-import os 
+import os
 import cohere
 import replicate
+import openai
 
 os.environ["REPLICATE_API_TOKEN"] = 'r8_Iw1wpExr9YGs2s9TNdCKxr98ROt1pac2BxE6G'
+os.environ["OPENAI_API_KEY"] = "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"
 co = cohere.Client('HtQ64yYsZGHmQPHALKE3y9WhqH7U5iItXSNMzLcW')
-
-# response = co.generate(
-#   prompt='',
-#   max_tokens=250,
-# )
-
+# OPENAI_API_KEY
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
 def prompt_cohere(question):
     response = co.generate(
@@ -52,16 +50,16 @@ Concluacion: asdasd
 # print(prompt("mole"))
 
 
-# Open AI GPT
-# import openai
-# OPENAI_API_KEY = "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"
-# openai.api_key = OPENAI_API_KEY
-# response = openai.Completion.create(
-#         engine="gpt-3.5-turbo",
-#         # model="text-davinci-003",
-#         prompt="Write a tagline for an ice cream shop."
-#         )
-# print(response)
+# def prompt_openai(question):
+#     # Open AI GPT
+#     # openai.api_key = OPENAI_API_KEY
+#     response = openai.Completion.create(
+#             engine="gpt-3.5-turbo",
+#             # model="gpt-3.5-turbo",
+#             # model="text-davinci-003",
+#             prompt=f"{question}. make it simple , more understandable, easy to read ,and as sections, make it as short article."
+#             )
+    # return response
 
 
 # openai.ChatCompletion.create(
@@ -120,4 +118,38 @@ def prompt_llama2(question):
 # print(output)
 # print()
 
+# prompt_openai("c=mv^2")
 
+
+opttion_1 = """Explain %s. make it simple , more understandable, easy to read,  as sections and make and like this format 
+{"Title": '',"Sections": [{"SectionTitle": "Introduction","SectionContent": "",},{"SectionTitle": "","SectionContent": "",},{"SectionTitle":"Conclusion","SectionContent": ""}]}
+just reply json format and don't nested section title  and just in sections array each object has "SectionTitile" and "Section Content" and don't without underline between objects and ensure that there no , end of object.
+don't stop until you finish."""
+
+opttion_2 = '''Explain %s. make it simple , more understandable, easy to read,  as sections and make and like this format 
+{'Title': '','Sections': [{'SectionTitle': 'Introduction','SectionContent': '',},{'SectionTitle': '','SectionContent': '',},{'SectionTitle':'Conclusion','SectionContent': ''}]}
+just reply json format and don't nested section title  and just in sections array each object has "SectionTitile" and "Section Content" and don't without underline between objects and ensure that there no , end of object.
+don't stop until you finish.''' 
+
+
+def prompt_openai(question, model="gpt-3.5-turbo"):
+    response = openai.ChatCompletion.create(
+            model=model,
+            messages=[
+                {"role": "system", "content": "You are helpful Teacher."},
+                {"role": "user", "content": opttion_1 % question},
+                ]
+            )
+    return response
+
+# print(prompt_openai("mole"))
+
+
+
+
+# print(openai.Completion.create(
+#   model="text-davinci-003",
+#   prompt="c=mv^2.  make it simple , more understandable, easy to read ,and as sections.",
+#   max_tokens=1000,
+#   temperature=0
+# ))

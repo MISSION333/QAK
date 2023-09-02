@@ -1,6 +1,16 @@
 {% extends 'layouts/base.html' %} 
 {% block main %}
+
     {{ question }}
     <br/>
-    {{ text}}
+    {{ data }}   
+{% endblock %}
+
+{% block js %} 
+<script >
+    const x = {{ data }};
+</script>
+<script>
+    
+</script>
 {% endblock %}
