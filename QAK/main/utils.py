@@ -121,12 +121,12 @@ def prompt_llama2(question):
 # prompt_openai("c=mv^2")
 
 
-opttion_1 = """Explain %s. make it simple , more understandable, easy to read,  as sections and make and like this format 
+opttion_1 = """Explain %s.  write with emojy, make it simple , more understandable, easy to read,  as sections and make and like this format 
 {"Title": '',"Sections": [{"SectionTitle": "Introduction","SectionContent": "",},{"SectionTitle": "","SectionContent": "",},{"SectionTitle":"Conclusion","SectionContent": ""}]}
 just reply json format and don't nested section title  and just in sections array each object has "SectionTitile" and "Section Content" and don't without underline between objects and ensure that there no , end of object.
 don't stop until you finish."""
 
-opttion_2 = '''Explain %s. make it simple , more understandable, easy to read,  as sections and make and like this format 
+opttion_2 = '''Explain %s. write with emojy. make it simple , more understandable, easy to read,  as sections and make and like this format 
 {'Title': '','Sections': [{'SectionTitle': 'Introduction','SectionContent': '',},{'SectionTitle': '','SectionContent': '',},{'SectionTitle':'Conclusion','SectionContent': ''}]}
 just reply json format and don't nested section title  and just in sections array each object has "SectionTitile" and "Section Content" and don't without underline between objects and ensure that there no , end of object.
 don't stop until you finish.''' 

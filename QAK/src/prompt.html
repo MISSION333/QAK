@@ -1,0 +1,182 @@
+{% extends 'layouts/base.html' %} 
+{% block headers %}
+<style>
+/* Add your CSS styles here */
+#section-container {
+    width: 80%;
+    margin: 0 auto;
+}
+.section {
+    display: none;
+}
+
+.loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+</style>
+{% endblock %}
+
+{% block main %}
+
+<div id="loading-screen" class="loading-screen">
+    Loading...
+</div>
+
+<div class="container is-flex is-justify-content-center is-align-items-center" style="height: 100vh;">
+    <div class="field has-addons">
+        <div class="control">
+            <input type="text" id="question" name="question" class="input" placeholder="Your question">
+        </div>
+        <div class="control">
+            <button class="button is-primary" onclick="postb()">Generate</button>
+        </div>
+    </div>
+
+    <div id="errors" class="is-danger"></div>
+
+</div>
+
+<div class="section is-flex is-justify-content-center is-align-items-center" style="height: 100vh;">
+    <div id="section-container">
+        <h1 id="title" class="title">Graph</h1>
+        <div id="sections">
+            <!-- Sections will be dynamically added here -->
+        </div>
+    </div>
+</div>
+
+<div id="navigation" class="field is-grouped">
+    <div class="control">
+        <button id="prev-btn" class="button is-primary">Previous</button>
+    </div>
+    <div class="control">
+        <button id="next-btn" class="button is-danger">Next</button>
+    </div>
+</div>
+{% endblock %}
+
+
+{% block js %}
+{% csrf_token %}
+<script>
+    const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+    const titleElement = document.getElementById("title");
+    const sectionsContainer = document.getElementById("sections");
+    const prevButton = document.getElementById("prev-btn");
+    const nextButton = document.getElementById("next-btn");
+    const loadingScreen = document.getElementById("loading-screen");
+    const errors = document.getElementById("errors");
+
+    let currentSectionIndex = 0;
+
+
+    var jsonData = {
+    "Title": "What is a Graph?",
+    "Sections": [
+        {
+            "SectionTitle": "📚 Introduction",
+            "SectionContent": "A graph 📊 is a mathematical structure 📐 used to represent relationships between different objects. It consists of a set of vertices 🌐 or nodes 🌟 connected by edges 🧵."
+        },
+        {
+            "SectionTitle": "🌐 Vertices or Nodes",
+            "SectionContent": "Vertices or nodes represent individual elements in a graph. They can represent anything, such as cities, people, or web pages 🌍. These vertices are often denoted by circles or squares."
+        },
+        {
+            "SectionTitle": "🧵 Edges",
+            "SectionContent": "Edges are the connections between vertices. They represent the relationships or connections between the objects they represent. Edges are usually depicted as lines or arrows connecting the vertices."
+        },
+        {
+            "SectionTitle": "🖼️ Graph Representation",
+            "SectionContent": "Graphs can be represented visually using diagrams or mathematically using matrices or lists. Various types of graphs, such as directed graphs, undirected graphs, weighted graphs, and bipartite graphs, can be used to represent different types of relationships or structures."
+        },
+        {
+            "SectionTitle": "🧩 Applications",
+            "SectionContent": "Graphs find applications in various fields such as computer science, social networks, transportation networks, electrical circuits, and more. They help in solving problems like finding the shortest path 🚗, identifying connected components 🔗, or analyzing data relationships."
+        },
+        {
+            "SectionTitle": "📝 Conclusion",
+            "SectionContent": "In summary, a graph is a way to represent connections or relationships between different objects. It consists of vertices connected by edges and is widely used in many fields for modeling and problem-solving purposes."
+        }
+    ]
+    }
+
+    function displaySection(index) {
+        sectionsContainer.innerHTML = `<h2 class="title">${jsonData.Sections[index].SectionTitle}</h2><p>${jsonData.Sections[index].SectionContent}</p>`;
+    }
+
+    // Initial display
+    loadingScreen.style.display = "none";
+    displaySection(currentSectionIndex);
+
+
+    prevButton.addEventListener("click", () => {
+        if (currentSectionIndex > 0) {
+            currentSectionIndex--;
+            displaySection(currentSectionIndex);
+        }
+    });
+
+    nextButton.addEventListener("click", () => {
+        if (currentSectionIndex < jsonData.Sections.length - 1) {
+            currentSectionIndex++;
+            displaySection(currentSectionIndex);
+        }
+    });
+
+    function postData(url = '', data = {}) {
+            const request = new Request(
+                url,
+                {
+                    headers: {
+                        'X-CSRFToken': csrftoken,
+                        'Content-Type': 'application/json',
+                    }
+                }
+            );
+        return fetch(request, {
+            method: 'POST', // *GET, POST, PUT, DELETE, etc.
+            mode: 'cors', // no-cors, *cors, same-origin
+            cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+            credentials: 'same-origin', // include, *same-origin, omit
+            redirect: 'follow', // manual, *follow, error
+            referrerPolicy: 'no-referrer', // no-referrer, *client
+            body: JSON.stringify(data) // body data type must match "Content-Type" header
+        }).then(response => response.json()); // parses JSON response into native JavaScript objects
+    }
+
+    function postb()
+    {
+        const loadingScreen = document.getElementById("loading-screen");
+        loadingScreen.style.display = "block";
+
+        postData('/generate/', {
+            question    : question.value,
+        }).then(data => {
+            jsonData = data;
+            currentSectionIndex = 0;
+            index = 0;
+            titleElement.innerHTML = `${data.Title}`;
+            displaySection(index)
+
+            // Hide the loading screen when the request is complete
+            loadingScreen.style.display = "none";
+            errors.innerHTML = ``;
+
+        }).catch(error => {
+            errors.innerHTML = `Error`;
+            loadingScreen.style.display = "none";
+        });
+    }
+</script>
+
+{% endblock %}

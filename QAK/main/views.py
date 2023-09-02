@@ -4,28 +4,14 @@ from django.shortcuts import render
 import re
 from main import utils
 
+
 def index(request):
+    return render(request, "index.html", {})
+
+
+def prompt(request):
     context = {}
-    return render(request, "index.html", context)
-
-# def genrator(request):
-#     context = {}
-#     if request.method == "POST":
-#         print(request.POST)
-#         question = request.POST.get("question")
-#         context['question'] = question
-#         # p = utils.prompt_cohere(question)
-#         # context['text'] = p[0].text
-#         text = utils.prompt_llama2(question)
-#         context['text'] = text
-#     # response[0].prompt, response[0].text
-#     return render(request, "generate.html", context)
-
-def regex_a(regex, replacment, text_in):
-    # regex = r",(\s)*}"
-    # replacment = "}"
-    # text_in = x.get("choices")[0].get("message").get("content").replace("\n", "")
-    return re.sub(regex, replacment, text_in)
+    return render(request, "prompt.html", context)
 
 
 def genrator(request):
