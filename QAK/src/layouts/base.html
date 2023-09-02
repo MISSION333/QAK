@@ -1,14 +1,37 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
     <head>
-        <title> QAK = {% block title %} Main {% endblock %} </title>
+        <title>  TechTeacher - {% block title %} Main {% endblock %} </title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="/static/assets/css/style.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+
+        <link rel="shortcut icon" href="{% static 'logo.png' %}" type="image/x-icon">
+
         {% block headers %}{% endblock %}
     </head>
     <body>
-        
+
+        <nav class="navbar" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="/">
+                    <img src="{% static 'logo.png' %}" alt="TechTeacher Logo" width="48" height="48">
+                    <span class="has-text-weight-bold">TechTeacher</span>
+                </a>
+            </div>
+            <div class="navbar-menu">
+                <div class="navbar-end">
+                    <!-- Add your navigation links here -->
+                    <!-- <a class="navbar-item" href="#">Home</a> -->
+                    <!-- <a class="navbar-item" href="#">About</a> -->
+                    <!-- <a class="navbar-item" href="#">Services</a> -->
+                    <!-- <a class="navbar-item" href="#">Contact</a> -->
+                </div>
+            </div>
+        </nav>
+
         {% block main %}{% endblock %}
 
     </body>
