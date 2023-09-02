@@ -1,0 +1,46 @@
+<div style={{width: 1440, height: 1024, position: 'relative', background: 'white'}}>
+  <div style={{width: 1200, paddingTop: 25, paddingBottom: 25, left: 52, top: 713, position: 'absolute', justifyContent: 'space-between', alignItems: 'flex-start', display: 'inline-flex'}}>
+    <div style={{width: 240.20, paddingTop: 8, paddingBottom: 8, paddingLeft: 86.59, paddingRight: 87.61, borderRight: '0.50px #CCCCCC solid', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'center', gap: 8, display: 'inline-flex'}}>
+      <img style={{width: 66, height: 66}} src="https://via.placeholder.com/66x66" />
+      <div style={{paddingLeft: 6.35, paddingRight: 6.15, flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'center', display: 'flex'}}>
+        <div style={{textAlign: 'center', color: 'black', fontSize: 18, fontFamily: 'Arial', fontWeight: '400', lineHeight: 27, wordWrap: 'break-word'}}>Math</div>
+      </div>
+    </div>
+    <div style={{width: 240.20, paddingTop: 8, paddingBottom: 8, paddingLeft: 61.74, paddingRight: 62.74, borderRight: '0.50px #CCCCCC solid', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'center', gap: 8, display: 'inline-flex'}}>
+      <img style={{width: 66, height: 66}} src="https://via.placeholder.com/66x66" />
+      <div style={{paddingLeft: 12.96, paddingRight: 12.76, flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'center', display: 'flex'}}>
+        <div style={{textAlign: 'center', color: 'black', fontSize: 18, fontFamily: 'Arial', fontWeight: '400', lineHeight: 27, wordWrap: 'break-word'}}>Data Analysis</div>
+      </div>
+    </div>
+    <div style={{width: 240.20, paddingTop: 8, paddingBottom: 8, paddingLeft: 40.73, paddingRight: 41.75, borderRight: '0.50px #CCCCCC solid', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'center', gap: 8, display: 'inline-flex'}}>
+      <img style={{width: 66, height: 66}} src="https://via.placeholder.com/66x66" />
+      <div style={{paddingLeft: 17.96, paddingRight: 17.76, flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'center', display: 'flex'}}>
+        <div style={{textAlign: 'center', color: 'black', fontSize: 18, fontFamily: 'Arial', fontWeight: '400', lineHeight: 27, wordWrap: 'break-word'}}>Computer Science</div>
+      </div>
+    </div>
+    <div style={{width: 240.20, paddingTop: 8, paddingBottom: 8, paddingLeft: 60.53, paddingRight: 61.54, borderRight: '0.50px #CCCCCC solid', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'center', gap: 8, display: 'inline-flex'}}>
+      <img style={{width: 66, height: 66}} src="https://via.placeholder.com/66x66" />
+      <div style={{paddingLeft: 14.67, paddingRight: 14.46, flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'center', display: 'flex'}}>
+        <div style={{textAlign: 'center', color: 'black', fontSize: 18, fontFamily: 'Arial', fontWeight: '400', lineHeight: 27, wordWrap: 'break-word'}}>Programming</div>
+      </div>
+    </div>
+    <div style={{width: 239.20, paddingLeft: 23.11, paddingRight: 23.11, paddingTop: 8, paddingBottom: 8, flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'center', gap: 8, display: 'inline-flex'}}>
+      <img style={{width: 66, height: 66}} src="https://via.placeholder.com/66x66" />
+      <div style={{paddingLeft: 21.59, paddingRight: 21.39, flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'center', display: 'flex'}}>
+        <div style={{textAlign: 'center', color: 'black', fontSize: 18, fontFamily: 'Arial', fontWeight: '400', lineHeight: 27, wordWrap: 'break-word'}}>Science & Engineering</div>
+      </div>
+    </div>
+  </div>
+  <img style={{width: 469, height: 464, left: 760, top: 200, position: 'absolute'}} src="https://via.placeholder.com/469x464" />
+  <div style={{width: 359, height: 118, left: 0, top: 0, position: 'absolute'}}>
+    <div style={{left: 9, top: 12, position: 'absolute', justifyContent: 'flex-start', alignItems: 'flex-start', display: 'inline-flex'}}>
+      <img style={{width: 86, height: 79, borderRadius: 9999}} src="https://via.placeholder.com/86x79" />
+      <div style={{width: 235, height: 91, color: 'black', fontSize: 32, fontFamily: 'Arial', fontWeight: '700', lineHeight: 55, letterSpacing: 0.05, wordWrap: 'break-word'}}>Tech Teacher</div>
+    </div>
+  </div>
+  <div style={{width: 590, height: 119, left: 115, top: 246, position: 'absolute', color: 'black', fontSize: 40, fontFamily: 'Arial', fontWeight: '700', lineHeight: 55, letterSpacing: 0.06, wordWrap: 'break-word'}}>Tech Teacher - Simplifying Your Tech Life</div>
+  <div style={{width: 559, height: 181, left: 115, top: 385, position: 'absolute', color: 'black', fontSize: 30, fontFamily: 'Arial', fontWeight: '400', lineHeight: 27, wordWrap: 'break-word'}}>Tech Teacher is your ultimate guide to all things tech-related. We offer simplified search, student resources, and an information hub to help you navigate the digital world with ease.</div>
+  <div style={{width: 192, height: 54, left: 624, top: 923, position: 'absolute', background: 'linear-gradient(15deg, #4A25E1 0%, #7B5AFF 93%)', boxShadow: '0px 21px 27px -10px rgba(96, 60, 255, 0.48)', borderRadius: 45, overflow: 'hidden', justifyContent: 'center', alignItems: 'center', display: 'inline-flex'}}>
+    <div style={{color: 'white', fontSize: 14, fontFamily: 'Plus Jakarta Sans', fontWeight: '600', lineHeight: 16, wordWrap: 'break-word'}}>Generate</div>
+  </div>
+</div>
