@@ -1,0 +1,72 @@
+{% extends 'layouts/base.html' %} 
+{% block headers %}
+<style>
+/* Add your CSS styles here */
+#section-container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+</style>
+{% endblock %}
+
+{% block main %}
+
+<div class="section is-flex is-justify-content-center is-align-items-center" style="height: 100vh;">
+    <div id="section-container">
+        <h1 id="title" class="title">{{ blog.title }}</h1>
+        <div id="sections">
+            <!-- Sections will be dynamically added here -->
+        </div>
+    </div>
+</div>
+
+
+<div id="navigation" class="field is-grouped">
+    <div class="control">
+        <button id="prev-btn" class="button is-primary">Previous</button>
+    </div>
+    <div class="control">
+        <button id="next-btn" class="button is-danger">Next</button>
+    </div>
+</div>
+{% endblock %}
+
+
+{% block js %}
+<script>
+    const titleElement = document.getElementById("title");
+    const sectionsContainer = document.getElementById("sections");
+    const prevButton = document.getElementById("prev-btn");
+    const nextButton = document.getElementById("next-btn");
+    let currentSectionIndex = 0;
+    var jsonData = { "Title": "{{ blog.title }}", "Sections":[] };
+    
+    {% for section in sections %}
+    jsonData["Sections"].push({"SectionTitle": `{{section.title}}`, "SectionContent": `{{section.content}}`});
+
+    {% endfor %}
+
+    function displaySection(index) {
+        sectionsContainer.innerHTML = `<h2 class="title">${jsonData.Sections[index].SectionTitle}</h2><p>${jsonData.Sections[index].SectionContent}</p>`;
+    }
+    // Initial display
+    displaySection(currentSectionIndex);
+
+
+    prevButton.addEventListener("click", () => {
+        if (currentSectionIndex > 0) {
+            currentSectionIndex--;
+            displaySection(currentSectionIndex);
+        }
+    });
+
+    nextButton.addEventListener("click", () => {
+        if (currentSectionIndex < jsonData.Sections.length - 1) {
+            currentSectionIndex++;
+            displaySection(currentSectionIndex);
+        }
+    });
+</script>
+
+{% endblock %}
